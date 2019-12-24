@@ -12,7 +12,7 @@ clearpart --all --initlabel
 
 # Create Physical Partition
 part /boot --size=512 --asprimary --ondrive=sda --fstype=xfs
-part swap --size=1024 --ondrive=sda 
+part swap --size=4096 --ondrive=sda 
 part / --size=8192 --grow --asprimary --ondrive=sda --fstype=xfs
 
 # Configure Firewall
