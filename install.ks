@@ -59,5 +59,16 @@ wget
 
 %end
 
+# Post-installation Script
+%post
+systemctl enable docker.service
+systemctl start docker.service
+curl -o /usr/bin/docker_start.sh https://raw.githubusercontent.com/vovuh/devops/master/docker_start.sh
+chmod +x /usr/bin/docker_start.sh
+curl -o /etc/systemd/system/docker_start.service https://raw.githubusercontent.com/vovuh/devops/master/docker_start.service
+chmod 644 /etc/systemd/system/docker_start.service
+systemctl enable docker_start.service
+%end
+
 # Reboot After Installation
 reboot --eject
